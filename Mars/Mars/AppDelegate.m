@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "BaseTabBarController.h"
+#import "GuideTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[BaseTabBarController alloc] init];
+    self.window.rootViewController = [[GuideTableViewController alloc] init];
     [self.window makeKeyAndVisible];
     
     return YES;

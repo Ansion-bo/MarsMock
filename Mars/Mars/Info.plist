@@ -40,5 +40,10 @@
 		<string>DINCond-Black.otf</string>
 		<string>DINCond-Bold.otf</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

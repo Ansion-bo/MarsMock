@@ -93,11 +93,6 @@ static const NSInteger Nav_ImgView_Tag = 1111;
 
     _textField.delegate = self;
 
-//    UILabel *placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(textField.width * 0.3, 5, textField.width * 0.4, textField.height)];
-//    placeHolderLabel.attributedText = placeholder;
-//    placeHolderLabel.textAlignment = NSTextAlignmentCenter;
-//    [textField addSubview:placeHolderLabel];
-
     UIImageView *placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
     placeHolderImageView.image = [UIImage imageNamed:@"search_ic"];
     _textField.leftView = placeHolderImageView;
@@ -123,7 +118,7 @@ static const NSInteger Nav_ImgView_Tag = 1111;
 
     textField.attributedPlaceholder = Search_Placeholder;
 
-    [UIView animateWithDuration:.25 animations:^{
+    [UIView animateWithDuration:.1 animations:^{
 
         [self.navigationBar viewWithTag:Nav_ImgView_Tag].hidden = YES;
         [self.navigationBar viewWithTag:Nav_ImgView_Tag + 1].hidden = YES;
@@ -132,7 +127,6 @@ static const NSInteger Nav_ImgView_Tag = 1111;
         textField.frame = frame;
 
         CATransform3D transform = CATransform3DMakeScale(1.2, 1, 1);
-
         textField.layer.transform = CATransform3DTranslate(transform, -0.15 * kScreenWidth, 0, 0);
 
 
@@ -141,6 +135,7 @@ static const NSInteger Nav_ImgView_Tag = 1111;
             _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.88, 5, 44, 30)];
             [_cancelButton setTitleColor:[UIColor colorWithRed:86 / 155.0 green:110 / 155.0 blue:74 / 155.0 alpha:1] forState:UIControlStateNormal];
             [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+            _cancelButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
             [_cancelButton addTarget:self action:@selector(popAction:) forControlEvents:UIControlEventTouchUpInside];
             [self.navigationBar addSubview:_cancelButton];
         }
@@ -155,7 +150,7 @@ static const NSInteger Nav_ImgView_Tag = 1111;
     
     if ([sender.titleLabel.text isEqualToString:@"取消"]) {
 
-        [UIView animateWithDuration:.25 animations:^{
+        [UIView animateWithDuration:.1 animations:^{
             sender.hidden = YES;
             _textField.layer.transform = CATransform3DIdentity;
             _textField.attributedPlaceholder = Default_Placeholder;
