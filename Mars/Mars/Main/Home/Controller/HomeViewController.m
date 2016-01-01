@@ -10,12 +10,16 @@
 #import "SearchViewController.h"
 #import "HTTPServer.h"
 #import "HomeModel.h"
-
+#import "HomeTableView.h"
 #import "TopicDetailTableViewController.h"
+#import "NSString+fitToURL.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <HomeTableViewDelegate>
 
 @property (strong, nonatomic)  NSMutableArray *topics;
+@property (strong, nonatomic)  NSMutableArray *bizareInfo;
+@property (strong, nonatomic)  NSMutableArray *storeInfo;
+@property (weak, nonatomic) IBOutlet HomeTableView *homeTableView;
 
 @end
 
@@ -23,9 +27,21 @@
 //150 182 132
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"World");
 
+//
+//    [self.homeTableView selectRowWithBlockHandler:^(HomeTableView * _Nullable homeTableView, NSIndexPath * _Nullable indexPath) {
+//
+//         [self.navigationController pushViewController:[[TopicDetailTableViewController alloc] init] animated:YES];
+//    }];
+    self.homeTableView.homeDelegate = self;
     [self loadData];
+    [self _loadBizareInfo];
+}
+
+#pragma mark - HomeTableViewDelegate
+- (void)homeTableView:(HomeTableView *)homeTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+     [self.navigationController pushViewController:[[TopicDetailTableViewController alloc] init] animated:YES];
 }
 
 #pragma mark - 
@@ -34,6 +50,20 @@
         _topics = [NSMutableArray array];
     }
     return _topics;
+}
+
+- (NSMutableArray *)bizareInfo {
+    if (!_bizareInfo) {
+        _bizareInfo = [NSMutableArray array];
+    }
+    return _bizareInfo;
+}
+
+- (NSMutableArray *)storeInfo {
+    if (!_storeInfo) {
+        _storeInfo = [NSMutableArray array];
+    }
+    return _storeInfo;
 }
 
 #pragma mark -
@@ -58,22 +88,51 @@
         for (NSDictionary *city in list) {
 
             TopicModel *model = [TopicModel yy_modelWithDictionary:city];
-            NSLog(@"%li", model.topic_id);
             [self.topics addObject:model];
         }
-
-
     } failed:^(NSError * _Nonnull error) {
-
         NSLog(@"%@", error);
     }];
 }
 
+- (void)_loadBizareInfo {
+//pp_version=1.3.1&city_id=5175&client_secret=cdaf9fc3dd97fd18d7ac280f58b039b8&client_type=iphone&is_auth=0&lang=zh&latitude=30.323466&limit=20&longitude=120.351833&os_version=9.3.1&page=1&screen_size=320x568&session_code=011e5c16e94fe2757ff2f8f87e4f0439&show_comments=0&type=0&v=1
 
-#pragma mark - tasks
-- (IBAction)test:(UIButton *)sender {
+    NSDictionary *parameters = @{
+                                 @"client_secret": @"cdaf9fc3dd97fd18d7ac280f58b039b8" ,
+                                 @"latitude": @"30.323466",
+                                 @"longitude": @"120.351833",
+                                 @"city_id": @"5175",
+                                 @"limit": @"20",
+                                 @"page": @"1",
+                                 @"is_auth": @"0",
+                                 @"show_comments": @"0",
+                                 @"type": @"0",
+                                 @"session_code": @"011e5c16e94fe2757ff2f8f87e4f0439"
+                                 };
 
-    [self.navigationController pushViewController:[[TopicDetailTableViewController alloc] init] animated:YES];
+    [HTTPServer requestWithURL:@"bizarea/bizareas/index" parameters:parameters fileData:nil HTTPMethod:@"POST" completed:^(NSURLSessionDataTask * _Nullable task, id  _Nonnull result) {
+
+        NSDictionary *data = result[@"data"];
+        NSArray *list1 = data[@"list_1"];
+        NSArray *list2 = data[@"list_2"];
+
+        for (NSDictionary *bizare in list1) {
+
+            BizareModel *model = [BizareModel yy_modelWithDictionary:bizare];
+            [self.bizareInfo addObject:model];
+        }
+
+        for (NSDictionary *bizare in list2) {
+
+            BizareModel *model = [BizareModel yy_modelWithDictionary:bizare];
+            [self.bizareInfo addObject:model];
+        }
+        self.homeTableView.bizares = _bizareInfo;
+        [self.homeTableView reloadData];
+    } failed:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 @end

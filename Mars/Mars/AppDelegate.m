@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GuideTableViewController.h"
+#import "BaseTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +22,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[GuideTableViewController alloc] init];
     [self.window makeKeyAndVisible];
+
     
+
     return YES;
 }
 

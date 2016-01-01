@@ -12,6 +12,7 @@
 #import "GuideTableViewCell.h"
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
+#import "HomeViewController.h"
 
 static NSString *const reuseIdentifier = @"guideCell";
 static const CGFloat cellHeight = 120.0;
@@ -67,7 +68,6 @@ static const CGFloat cellHeight = 120.0;
         for (NSDictionary *city in cities) {
 
             GuideModel *model = [GuideModel yy_modelWithDictionary:city];
-            NSLog(@"-------------%li", model.city_id);
             [self.cities addObject:model];
         }
 
@@ -108,10 +108,16 @@ static const CGFloat cellHeight = 120.0;
 
 #pragma mark - UITableViewDelegate 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
-        appDelegate.window.rootViewController = [[BaseTabBarController alloc] init];
+
+    [UIView transitionWithView:appDelegate.window duration:.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+        BOOL oldState = [UIView areAnimationsEnabled];
+        [UIView setAnimationsEnabled:NO];
+
+        BaseTabBarController *tabBarCV = [[BaseTabBarController alloc] init];
+        [appDelegate.window setRootViewController:tabBarCV];
+
+        [UIView setAnimationsEnabled:oldState];
     } completion:NULL];
 }
 /*

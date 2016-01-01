@@ -8,6 +8,9 @@
 
 #import "HomeModel.h"
 
+@implementation PicInfoModel
+@end
+
 #pragma mark - implementation of HomeModel
 @implementation HomeModel
 @end
@@ -35,6 +38,18 @@
     return @{
              @"store_id" : @"id",
              @"store_description": @"description"
+             };
+}
+
+@end
+
+@implementation BizareModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+
+    return @{
+             @"bizare_id" : @"id",
+             @"bizare_description": @"description"
              };
 }
 

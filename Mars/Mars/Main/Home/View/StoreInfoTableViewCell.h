@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "HomeModel.h"
 
+@protocol StoreInfoTableViewCellDelegate <NSObject>
+
+- (void)tableViewCellDidSelecteButton;
+
+@end
+
 @interface StoreInfoTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) StoreInfoModel *storeInfoModel;
+
+@property (weak, nonatomic) id<StoreInfoTableViewCellDelegate> delegeate;
 
 @end

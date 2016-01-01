@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="334" id="KGk-i7-Jjw" customClass="HomebizareaInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="419" height="335"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="419" height="334.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJw-Qw-Leo">
+                        <rect key="frame" x="0.0" y="0.0" width="419" height="120"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="sUf-HN-Ags"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eR-QD-fZe">
+                        <rect key="frame" x="145" y="231" width="129" height="95.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2O-ph-Mpz">
+                        <rect key="frame" x="282" y="231" width="129" height="95.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32J-PB-OCT">
+                        <rect key="frame" x="145" y="128" width="129" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyT-U4-YMb">
+                        <rect key="frame" x="282" y="128" width="129" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-eQ-uTf">
+                        <rect key="frame" x="8" y="231.5" width="129" height="95.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="95.5" id="8sv-I8-dCj"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pr8-Fl-Wyu">
+                        <rect key="frame" x="8" y="128" width="129" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="32J-PB-OCT" firstAttribute="leading" secondItem="pr8-Fl-Wyu" secondAttribute="trailing" constant="8" id="08h-DA-hQs"/>
+                    <constraint firstItem="QJw-Qw-Leo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="0o7-kN-TiB"/>
+                    <constraint firstItem="pr8-Fl-Wyu" firstAttribute="top" secondItem="QJw-Qw-Leo" secondAttribute="bottom" constant="8" id="2s1-Aq-IAx"/>
+                    <constraint firstItem="pr8-Fl-Wyu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="54f-Dc-Vhz"/>
+                    <constraint firstItem="DRF-eQ-uTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="8Uy-hS-DjY"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="EKd-oc-99e"/>
+                    <constraint firstItem="6eR-QD-fZe" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="HKa-sZ-6X7"/>
+                    <constraint firstItem="6eR-QD-fZe" firstAttribute="height" secondItem="DRF-eQ-uTf" secondAttribute="height" id="HzJ-Kd-X32"/>
+                    <constraint firstItem="32J-PB-OCT" firstAttribute="top" secondItem="QJw-Qw-Leo" secondAttribute="bottom" constant="8" id="KCV-Ew-ka4"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="QJw-Qw-Leo" secondAttribute="trailing" constant="-8" id="LD0-Te-qck"/>
+                    <constraint firstItem="DRF-eQ-uTf" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="MPQ-fa-9De"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="top" secondItem="eyT-U4-YMb" secondAttribute="bottom" constant="8" id="N3A-9a-gTD"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="leading" secondItem="6eR-QD-fZe" secondAttribute="trailing" constant="8" id="PHW-ed-qvC"/>
+                    <constraint firstItem="32J-PB-OCT" firstAttribute="height" secondItem="pr8-Fl-Wyu" secondAttribute="height" id="R4d-UJ-RHf"/>
+                    <constraint firstItem="QJw-Qw-Leo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Sli-vD-pgX"/>
+                    <constraint firstItem="6eR-QD-fZe" firstAttribute="width" secondItem="DRF-eQ-uTf" secondAttribute="width" id="Und-f3-ht9"/>
+                    <constraint firstItem="6eR-QD-fZe" firstAttribute="leading" secondItem="DRF-eQ-uTf" secondAttribute="trailing" constant="8" id="XZm-RU-cHV"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="width" secondItem="DRF-eQ-uTf" secondAttribute="width" id="hqT-Gn-Gql"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="height" secondItem="DRF-eQ-uTf" secondAttribute="height" id="jJy-CR-Ie2"/>
+                    <constraint firstItem="eyT-U4-YMb" firstAttribute="height" secondItem="pr8-Fl-Wyu" secondAttribute="height" id="lN4-UF-z0F"/>
+                    <constraint firstItem="U2O-ph-Mpz" firstAttribute="leading" secondItem="6eR-QD-fZe" secondAttribute="trailing" constant="8" id="n2R-em-XbZ"/>
+                    <constraint firstItem="6eR-QD-fZe" firstAttribute="top" secondItem="32J-PB-OCT" secondAttribute="bottom" constant="8" id="n4A-Wt-igN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eyT-U4-YMb" secondAttribute="trailing" id="o3g-ge-593"/>
+                    <constraint firstItem="32J-PB-OCT" firstAttribute="width" secondItem="pr8-Fl-Wyu" secondAttribute="width" id="pXJ-pR-zj9"/>
+                    <constraint firstItem="eyT-U4-YMb" firstAttribute="width" secondItem="pr8-Fl-Wyu" secondAttribute="width" id="rAz-Zm-U3t"/>
+                    <constraint firstItem="eyT-U4-YMb" firstAttribute="top" secondItem="QJw-Qw-Leo" secondAttribute="bottom" constant="8" id="vs9-jm-fsS"/>
+                    <constraint firstItem="eyT-U4-YMb" firstAttribute="leading" secondItem="32J-PB-OCT" secondAttribute="trailing" constant="8" id="wZS-ZO-I6v"/>
+                    <constraint firstItem="DRF-eQ-uTf" firstAttribute="top" secondItem="pr8-Fl-Wyu" secondAttribute="bottom" constant="8" id="xMy-VN-2Ua"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="U2O-ph-Mpz" secondAttribute="trailing" id="xwp-Bh-8Wn"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="PHW-ed-qvC"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="centerButton" destination="6eR-QD-fZe" id="he3-XM-W92"/>
+                <outlet property="centerLeftButton" destination="pr8-Fl-Wyu" id="Gep-90-Jep"/>
+                <outlet property="centerRightButton" destination="eyT-U4-YMb" id="uF1-GJ-h95"/>
+                <outlet property="coverButton" destination="QJw-Qw-Leo" id="G49-IM-6MP"/>
+                <outlet property="heartButton" destination="32J-PB-OCT" id="1GB-Mw-tH9"/>
+                <outlet property="leftButton" destination="DRF-eQ-uTf" id="X5r-UT-eRd"/>
+                <outlet property="rightButton" destination="U2O-ph-Mpz" id="cdB-sU-Z8P"/>
+            </connections>
+            <point key="canvasLocation" x="291.5" y="330"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "YYModel.h"
 
+@interface PicInfoModel : NSObject
+@property (copy, nonatomic) NSString *url;
+@property (assign, nonatomic) float width;
+@property (assign, nonatomic) float height;
+@property (assign, nonatomic) NSInteger comment_id;;
+@end
+
 #pragma mark - interface of HomeModel
 @interface HomeModel : NSObject
 @property (copy, nonatomic) NSString *message;
@@ -17,7 +24,6 @@
 
 #pragma mark - interface of TopicModel
 @interface TopicModel : NSObject
-
 @property (copy, nonatomic) NSString *cover;
 @property (copy, nonatomic) NSString *topic_description;
 @property (assign, nonatomic) NSInteger topic_id;
@@ -26,14 +32,12 @@
 
 #pragma mark - interface of TopicDetailModel
 @interface TopicDetailModel : TopicModel
-
 @property (assign, nonatomic) NSInteger publish_time;
 @property (copy, nonatomic) NSString *publish_time_str;
 @property (strong, nonatomic) NSArray *stores;
 @end
 
 @interface StoreInfoModel : NSObject
-
 @property (copy, nonatomic) NSString *store_name;
 @property (copy, nonatomic) NSString *store_english_name;
 @property (copy, nonatomic) NSString *store_sub_title;
@@ -51,5 +55,19 @@
 @property (strong, nonatomic) NSDictionary *opening_time;
 @property (assign, nonatomic) NSInteger city;
 @property (copy, nonatomic) NSString *address;
+@property (assign, nonatomic) NSInteger is_fav;
+@property (strong, nonatomic) NSDictionary *bizinfo;
+@property (strong, nonatomic) NSArray *category;
+@property (strong, nonatomic) NSArray *pics;
+@end
 
+@interface BizareModel : NSObject
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *english_name;
+@property (copy, nonatomic) NSString *headpic;
+@property (copy, nonatomic) NSString *bizare_description;
+@property (assign, nonatomic) NSInteger bizare_id;
+
+@property (strong, nonatomic) NSArray *stores;
 @end

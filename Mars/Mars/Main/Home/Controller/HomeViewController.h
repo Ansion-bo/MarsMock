@@ -11,4 +11,7 @@
 
 @interface HomeViewController : BaseViewController
 
+@property (copy, nonatomic) NSString *currentCity;
+
+
 @end

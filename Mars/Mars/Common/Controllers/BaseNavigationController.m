@@ -15,13 +15,15 @@ static const NSInteger Nav_ImgView_Tag = 1111;
 #define Default_Placeholder [[NSAttributedString alloc] initWithString:@"mars" attributes:@{ NSFontAttributeName:  [UIFont fontWithName:@"ITC Bookman Demi" size:22], NSForegroundColorAttributeName: [UIColor whiteColor], NSBaselineOffsetAttributeName: @3, }]
 #define Search_Placeholder [[NSAttributedString alloc] initWithString:@"搜索" attributes:@{NSFontAttributeName:  [UIFont systemFontOfSize:14], NSForegroundColorAttributeName: [UIColor whiteColor], NSBaselineOffsetAttributeName: @-2}];
 
-@interface BaseNavigationController () <UIGestureRecognizerDelegate, UITextFieldDelegate> {
+@interface BaseNavigationController () <UIGestureRecognizerDelegate, UITextFieldDelegate, UISearchBarDelegate> {
     UIGestureRecognizer *gesture;
 
     UITextField *_textField;
     UIButton *_cancelButton;
-
-
+//    UISearchBar *_searchBar;
+    UIImageView *placeHolderImageView;
+    UIImageView *imageView;
+    UILabel *label;
 }
 
 @end
@@ -39,6 +41,12 @@ static const NSInteger Nav_ImgView_Tag = 1111;
     [self customPopGesture];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSLog(@"!");
+}
+
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [super pushViewController:viewController animated:animated];
 
@@ -48,6 +56,33 @@ static const NSInteger Nav_ImgView_Tag = 1111;
     [leftButton setImage:[UIImage imageNamed:@"IQButtonBarArrowLeft"] forState:UIControlStateNormal];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     viewController.navigationItem.leftBarButtonItem = leftBarButtonItem;
+
+    [self clearNavigationBar];
+}
+
+//- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+//
+//    UIViewController *VC = [super popViewControllerAnimated:animated];
+//    if ([VC isKindOfClass:NSClassFromString(@"HomeViewController")] || [VC isKindOfClass:NSClassFromString(@"DiscoverViewController")]) {
+//
+//        [self showNavigationBar];
+//    }
+//
+//    return VC;
+//}
+
+- (void)clearNavigationBar {
+    placeHolderImageView.hidden = YES;
+    _textField.hidden = YES;
+    imageView.hidden = YES;
+    label.hidden = YES;
+}
+
+- (void)showNavigationBar {
+    placeHolderImageView.hidden =  NO;
+    _textField.hidden = NO;
+    imageView.hidden = NO;
+    label.hidden = NO;
 }
 
 /**
@@ -83,28 +118,40 @@ static const NSInteger Nav_ImgView_Tag = 1111;
     return self.viewControllers.count > 1 && ![[self valueForKey:@"_isTransitioning"] boolValue];
 }
 
+
 #pragma mark - 
 - (void)customizeNavigationBar {
+    if (!([self.topViewController isKindOfClass:NSClassFromString(@"HomeViewController")] || [self.topViewController isKindOfClass:NSClassFromString(@"DiscoverViewController")])) {
+        return;
+    }
 
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.28, 5, kScreenWidth * 0.7, 30)];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.backgroundColor = [UIColor blackColor];
     _textField.attributedPlaceholder = Default_Placeholder;
-
     _textField.delegate = self;
 
-    UIImageView *placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
+    placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
     placeHolderImageView.image = [UIImage imageNamed:@"search_ic"];
     _textField.leftView = placeHolderImageView;
     _textField.leftViewMode = UITextFieldViewModeAlways;
     [self.navigationBar addSubview:_textField];
 
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.06, 5, 24, 30)];
+//    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(kScreenWidth * 0.28, 5, kScreenWidth * 0.7, 30)];
+//
+//    _searchBar.placeholder = Default_Placeholder;
+//    _searchBar.backgroundColor = [UIColor blackColor];
+//    _searchBar.delegate = self;
+//    _searchBar.tintColor = [UIColor blackColor];
+//    _searchBar.barStyle = UISearchBarStyleProminent;
+//    [self.navigationBar addSubview:_searchBar];
+
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.06, 5, 24, 30)];
     imageView.image = [UIImage imageNamed:@"nav_location_icon"];
     imageView.tag = Nav_ImgView_Tag;
     [self.navigationBar addSubview:imageView];
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 8, 5, 0.14 * kScreenWidth, 30)];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 8, 5, 0.14 * kScreenWidth, 30)];
     label.tag = Nav_ImgView_Tag + 1;
     label.font = [UIFont systemFontOfSize:18.0];
 

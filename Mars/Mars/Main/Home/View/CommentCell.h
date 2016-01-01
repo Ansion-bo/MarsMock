@@ -1,5 +1,5 @@
 //
-//  TopicDetailViewController.h
+//  CommentCell.h
 //  Mars
 //
 //  Created by Wayde C. on 1/1/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopicDetailViewController : UIViewController
+@interface CommentCell : UITableViewCell
 
 @end

@@ -1,18 +1,18 @@
 //
-//  TopicDetailViewController.m
+//  StoreInfoViewController.m
 //  Mars
 //
-//  Created by Wayde C. on 1/1/16.
+//  Created by Wayde C. on 5/27/16.
 //  Copyright © 2016 Wayde C. All rights reserved.
 //
 
-#import "TopicDetailViewController.h"
+#import "StoreInfoViewController.h"
 
-@interface TopicDetailViewController ()
+@interface StoreInfoViewController ()
 
 @end
 
-@implementation TopicDetailViewController
+@implementation StoreInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

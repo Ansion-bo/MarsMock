@@ -9,6 +9,7 @@
 #import "GuideTableViewCell.h"
 #import "GuideModel.h"
 #import "UIImageView+WebCache.h"
+#import "NSString+fitToURL.h"
 
 @interface GuideTableViewCell ()
 
@@ -40,8 +41,8 @@
 //    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:@"" options:NSRegularExpressionCaseInsensitive error:nil];
 
     NSString *string = _guideModel.background;
-    NSRange range =  [string rangeOfString:@"?"];
-    NSString *imageURL = [string substringWithRange: NSMakeRange(0, range.location)];
+
+    NSString *imageURL = [string cutToFitAURL];
 
     [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:imageURL]];
     self.EnglishNameLabel.text = _guideModel.english_name;
