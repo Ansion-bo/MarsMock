@@ -10,8 +10,18 @@
 #import "SearchViewController.h"
 #import "UIViewExt.h"
 
+static const NSInteger Nav_ImgView_Tag = 1111;
+
+#define Default_Placeholder [[NSAttributedString alloc] initWithString:@"mars" attributes:@{ NSFontAttributeName:  [UIFont fontWithName:@"ITC Bookman Demi" size:22], NSForegroundColorAttributeName: [UIColor whiteColor], NSBaselineOffsetAttributeName: @3, }]
+#define Search_Placeholder [[NSAttributedString alloc] initWithString:@"搜索" attributes:@{NSFontAttributeName:  [UIFont systemFontOfSize:14], NSForegroundColorAttributeName: [UIColor whiteColor], NSBaselineOffsetAttributeName: @-2}];
+
 @interface BaseNavigationController () <UIGestureRecognizerDelegate, UITextFieldDelegate> {
     UIGestureRecognizer *gesture;
+
+    UITextField *_textField;
+    UIButton *_cancelButton;
+
+
 }
 
 @end
@@ -33,7 +43,7 @@
     [super pushViewController:viewController animated:animated];
 
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton addTarget:self action:@selector(popAction:) forControlEvents:UIControlEventTouchUpInside];
     leftButton.frame = CGRectMake(0, 0, 24, 42);
     [leftButton setImage:[UIImage imageNamed:@"IQButtonBarArrowLeft"] forState:UIControlStateNormal];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
@@ -75,44 +85,33 @@
 
 #pragma mark - 
 - (void)customizeNavigationBar {
-    UIImage *navImage = [UIImage imageNamed:@"nav_textField"];
-    [navImage stretchableImageWithLeftCapWidth:20 topCapHeight:2];
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.28, 5, kScreenWidth * 0.7, 30)];
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.backgroundColor = [UIColor blackColor];
-    NSAttributedString *placeholder = [[NSAttributedString alloc]
-                                       initWithString:@"mars"
-                                       attributes:@{
-                                                    NSFontAttributeName:  [UIFont fontWithName:@"ITC Bookman Demi" size:22],
-                                                    NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                    NSBaselineOffsetAttributeName: @3,
 
-                                                    }];
-//    textField.attributedPlaceholder = placeholder;
-    textField.delegate = self;
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.28, 5, kScreenWidth * 0.7, 30)];
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
+    _textField.backgroundColor = [UIColor blackColor];
+    _textField.attributedPlaceholder = Default_Placeholder;
 
-    UILabel *placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(textField.width * 0.3, 5, textField.width * 0.4, textField.height)];
-    placeHolderLabel.attributedText = placeholder;
-    placeHolderLabel.textAlignment = NSTextAlignmentCenter;
-    [textField addSubview:placeHolderLabel];
-    
-    UIImageView *placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 20, 20)];
+    _textField.delegate = self;
+
+//    UILabel *placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(textField.width * 0.3, 5, textField.width * 0.4, textField.height)];
+//    placeHolderLabel.attributedText = placeholder;
+//    placeHolderLabel.textAlignment = NSTextAlignmentCenter;
+//    [textField addSubview:placeHolderLabel];
+
+    UIImageView *placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 20, 20)];
     placeHolderImageView.image = [UIImage imageNamed:@"search_ic"];
-    [textField addSubview:placeHolderImageView];
-    [self.navigationBar addSubview:textField];
-
-//    UIView *editView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(placeHolderImageView.frame) + 8, 0, textField.width * 0.4, 30)];
-//    editView.backgroundColor = [UIColor clearColor];
-//    textField.inputView = editView;
+    _textField.leftView = placeHolderImageView;
+    _textField.leftViewMode = UITextFieldViewModeAlways;
+    [self.navigationBar addSubview:_textField];
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.06, 5, 24, 30)];
     imageView.image = [UIImage imageNamed:@"nav_location_icon"];
+    imageView.tag = Nav_ImgView_Tag;
     [self.navigationBar addSubview:imageView];
 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 8, 5, 0.14 * kScreenWidth, 30)];
-
-    label.font = [UIFont systemFontOfSize:22.0];
-    NSLog(@"%@", [UIFont familyNames]);
+    label.tag = Nav_ImgView_Tag + 1;
+    label.font = [UIFont systemFontOfSize:18.0];
 
 //    这里传参
     label.text = @"香港";
@@ -122,12 +121,49 @@
 #pragma mark - UITextFieldDelegate 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 
+    textField.attributedPlaceholder = Search_Placeholder;
+
+    [UIView animateWithDuration:.25 animations:^{
+
+        [self.navigationBar viewWithTag:Nav_ImgView_Tag].hidden = YES;
+        [self.navigationBar viewWithTag:Nav_ImgView_Tag + 1].hidden = YES;
+        CGRect frame = textField.frame;
+        frame.size.width = 0.7 * kScreenWidth;
+        textField.frame = frame;
+
+        CATransform3D transform = CATransform3DMakeScale(1.2, 1, 1);
+
+        textField.layer.transform = CATransform3DTranslate(transform, -0.15 * kScreenWidth, 0, 0);
+
+
+        if (!_cancelButton) {
+
+            _cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth * 0.88, 5, 44, 30)];
+            [_cancelButton setTitleColor:[UIColor colorWithRed:86 / 155.0 green:110 / 155.0 blue:74 / 155.0 alpha:1] forState:UIControlStateNormal];
+            [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+            [_cancelButton addTarget:self action:@selector(popAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self.navigationBar addSubview:_cancelButton];
+        }
+        _cancelButton.hidden = NO;
+    }];
     SearchViewController *searchViewController = [[SearchViewController alloc] init];
     [self pushViewController:searchViewController animated:YES];
 }
 
 #pragma mark - tasks
-- (void)popAction {
+- (void)popAction:(UIButton *)sender {
+    
+    if ([sender.titleLabel.text isEqualToString:@"取消"]) {
+
+        [UIView animateWithDuration:.25 animations:^{
+            sender.hidden = YES;
+            _textField.layer.transform = CATransform3DIdentity;
+            _textField.attributedPlaceholder = Default_Placeholder;
+            [_textField resignFirstResponder];
+            [self.navigationBar viewWithTag:Nav_ImgView_Tag].hidden = NO;
+            [self.navigationBar viewWithTag:Nav_ImgView_Tag + 1].hidden = NO;
+        }];
+    }
 
     [self popViewControllerAnimated:YES];
 }

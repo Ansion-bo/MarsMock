@@ -19,7 +19,13 @@
 //    self.view.backgroundColor = [UIColor greenColor];
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
+
     NSLog(@"Hello");
+}
+
+- (void)popAction {
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

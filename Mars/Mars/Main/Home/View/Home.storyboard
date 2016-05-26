@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-281" y="336"/>
         </scene>
-        <!--首页-->
+        <!--Home View Controller-->
         <scene sceneID="mwg-3T-W8J">
             <objects>
                 <viewController id="5ge-no-ImO" customClass="HomeViewController" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="E2z-0z-Adi"/>
+                    <navigationItem key="navigationItem" id="E2z-0z-Adi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1be-TG-7zH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
