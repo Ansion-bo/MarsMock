@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface TimelineViewController : UIViewController
+@interface TimelineViewController : BaseViewController
 
 @end

@@ -1,22 +1,25 @@
 //
-//  MessageViewController.m
+//  SearchViewController.m
 //  Mars
 //
-//  Created by Wayde C. on 1/1/16.
+//  Created by Wayde C. on 5/26/16.
 //  Copyright © 2016 Wayde C. All rights reserved.
 //
 
-#import "MessageViewController.h"
+#import "SearchViewController.h"
 
-@interface MessageViewController ()
+@interface SearchViewController ()
 
 @end
 
-@implementation MessageViewController
+@implementation SearchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+//    self.view.backgroundColor = [UIColor greenColor];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
+    NSLog(@"Hello");
 }
 
 - (void)didReceiveMemoryWarning {

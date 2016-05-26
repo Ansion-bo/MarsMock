@@ -1,22 +1,23 @@
 //
-//  MessageViewController.m
+//  BaseViewController.m
 //  Mars
 //
-//  Created by Wayde C. on 1/1/16.
+//  Created by Wayde C. on 5/26/16.
 //  Copyright © 2016 Wayde C. All rights reserved.
 //
 
-#import "MessageViewController.h"
+#import "BaseViewController.h"
 
-@interface MessageViewController ()
+@interface BaseViewController ()
 
 @end
 
-@implementation MessageViewController
+@implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,8 +7,10 @@
 //
 
 #import "BaseNavigationController.h"
+#import "SearchViewController.h"
+#import "UIViewExt.h"
 
-@interface BaseNavigationController () <UIGestureRecognizerDelegate> {
+@interface BaseNavigationController () <UIGestureRecognizerDelegate, UITextFieldDelegate> {
     UIGestureRecognizer *gesture;
 }
 
@@ -19,6 +21,10 @@
 #pragma mark - Life circle
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.navigationBar.translucent = NO;
+
+    [self customizeNavigationBar];
 
     [self customPopGesture];
 }
@@ -67,6 +73,58 @@
     return self.viewControllers.count > 1 && ![[self valueForKey:@"_isTransitioning"] boolValue];
 }
 
+#pragma mark - 
+- (void)customizeNavigationBar {
+    UIImage *navImage = [UIImage imageNamed:@"nav_textField"];
+    [navImage stretchableImageWithLeftCapWidth:20 topCapHeight:2];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWidth * 0.28, 5, kScreenWidth * 0.7, 30)];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.backgroundColor = [UIColor blackColor];
+    NSAttributedString *placeholder = [[NSAttributedString alloc]
+                                       initWithString:@"mars"
+                                       attributes:@{
+                                                    NSFontAttributeName:  [UIFont fontWithName:@"ITC Bookman Demi" size:22],
+                                                    NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                    NSBaselineOffsetAttributeName: @3,
+
+                                                    }];
+//    textField.attributedPlaceholder = placeholder;
+    textField.delegate = self;
+
+    UILabel *placeHolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(textField.width * 0.3, 5, textField.width * 0.4, textField.height)];
+    placeHolderLabel.attributedText = placeholder;
+    placeHolderLabel.textAlignment = NSTextAlignmentCenter;
+    [textField addSubview:placeHolderLabel];
+    
+    UIImageView *placeHolderImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 20, 20)];
+    placeHolderImageView.image = [UIImage imageNamed:@"search_ic"];
+    [textField addSubview:placeHolderImageView];
+    [self.navigationBar addSubview:textField];
+
+//    UIView *editView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(placeHolderImageView.frame) + 8, 0, textField.width * 0.4, 30)];
+//    editView.backgroundColor = [UIColor clearColor];
+//    textField.inputView = editView;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth * 0.06, 5, 24, 30)];
+    imageView.image = [UIImage imageNamed:@"nav_location_icon"];
+    [self.navigationBar addSubview:imageView];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 8, 5, 0.14 * kScreenWidth, 30)];
+
+    label.font = [UIFont systemFontOfSize:22.0];
+    NSLog(@"%@", [UIFont familyNames]);
+
+//    这里传参
+    label.text = @"香港";
+    [self.navigationBar addSubview:label];
+}
+
+#pragma mark - UITextFieldDelegate 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+
+    SearchViewController *searchViewController = [[SearchViewController alloc] init];
+    [self pushViewController:searchViewController animated:YES];
+}
 
 #pragma mark - tasks
 - (void)popAction {

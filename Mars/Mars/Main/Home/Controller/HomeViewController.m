@@ -7,12 +7,23 @@
 //
 
 #import "HomeViewController.h"
-#import "MessageViewController.h"
+#import "SearchViewController.h"
 
 @implementation HomeViewController
-- (IBAction)action:(UIButton *)sender {
+//150 182 132
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"World");
 
-    [self.navigationController pushViewController:[[MessageViewController alloc] init] animated:YES];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    button.backgroundColor = [UIColor blueColor];
+    [button addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:button];
 }
 
+- (void)push {
+
+    [self.navigationController pushViewController:[[SearchViewController alloc] init] animated:YES];
+}
 @end
