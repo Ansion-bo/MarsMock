@@ -27,3 +27,15 @@
 #pragma mark - implementation of TopicDetailModel
 @implementation TopicDetailModel
 @end
+
+@implementation StoreInfoModel
+
++ (NSDictionary *)modelCustomPropertyMapper {
+
+    return @{
+             @"store_id" : @"id",
+             @"store_description": @"description"
+             };
+}
+
+@end

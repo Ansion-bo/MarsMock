@@ -7,6 +7,7 @@
 //
 
 #import "StoreInfoTableViewCell.h"
+#import "HomeModel.h"
 
 @interface StoreInfoTableViewCell ()
 
@@ -20,6 +21,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setStoreInfoModel:(StoreInfoModel *)storeInfoModel {
+    _storeInfoModel = storeInfoModel;
+    NSLog(@"%@", storeInfoModel.headpic);
+    self.storeNameLabel.text = storeInfoModel.store_english_name;
+    self.storeNameLabel.font = [UIFont fontWithName:@"ITC Bookman Demi" size:25];
 }
 
 #pragma mark - tasks

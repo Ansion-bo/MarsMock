@@ -77,6 +77,7 @@
 		B7A1EF581C361460009F35BD /* store_badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A1EF551C361460009F35BD /* store_badge.png */; };
 		B7A1EF591C361460009F35BD /* store_badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A1EF561C361460009F35BD /* store_badge@2x.png */; };
 		B7A1EF5A1C361460009F35BD /* store_badge@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B7A1EF571C361460009F35BD /* store_badge@3x.png */; };
+		B7A1EF5D1CF7F48A009F35BD /* SotreInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1EF5C1CF7F48A009F35BD /* SotreInfoModel.m */; };
 		B7F067C01C35FAB000FCBD4B /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F067BF1C35FAB000FCBD4B /* UIViewExt.m */; };
 		B7F067C71C35FBD700FCBD4B /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F067C31C35FBD700FCBD4B /* NSObject+YYModel.m */; };
 		B7F067C81C35FBD700FCBD4B /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F067C51C35FBD700FCBD4B /* YYClassInfo.m */; };
@@ -206,6 +207,8 @@
 		B7A1EF551C361460009F35BD /* store_badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store_badge.png; sourceTree = "<group>"; };
 		B7A1EF561C361460009F35BD /* store_badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_badge@2x.png"; sourceTree = "<group>"; };
 		B7A1EF571C361460009F35BD /* store_badge@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store_badge@3x.png"; sourceTree = "<group>"; };
+		B7A1EF5B1CF7F48A009F35BD /* SotreInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SotreInfoModel.h; sourceTree = "<group>"; };
+		B7A1EF5C1CF7F48A009F35BD /* SotreInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SotreInfoModel.m; sourceTree = "<group>"; };
 		B7F067BE1C35FAB000FCBD4B /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		B7F067BF1C35FAB000FCBD4B /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		B7F067C21C35FBD700FCBD4B /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 				B7F067D01C35FC8800FCBD4B /* GuideModel.m */,
 				B7A1EF471C35FBA4009F35BD /* HomeModel.h */,
 				B7A1EF481C35FBA4009F35BD /* HomeModel.m */,
+				B7A1EF5B1CF7F48A009F35BD /* SotreInfoModel.h */,
+				B7A1EF5C1CF7F48A009F35BD /* SotreInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -786,6 +791,7 @@
 				B7FFBC481CF57110007C1C6E /* main.m in Sources */,
 				B7A1EF491C35FBA4009F35BD /* HomeModel.m in Sources */,
 				B7F067C01C35FAB000FCBD4B /* UIViewExt.m in Sources */,
+				B7A1EF5D1CF7F48A009F35BD /* SotreInfoModel.m in Sources */,
 				B7F067CE1C35FC2F00FCBD4B /* GuideTableViewController.m in Sources */,
 				B79DA5CA1CF6F2CF00F0C99D /* BaseViewController.m in Sources */,
 				B7A1EF4F1C3607C4009F35BD /* TopicDetailTableViewController.m in Sources */,

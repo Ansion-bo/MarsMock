@@ -9,8 +9,14 @@
 #import "TopicDetailTableViewController.h"
 #import "HTTPServer.h"
 #import "HomeModel.h"
+#import "StoreInfoTableViewCell.h"
+
+static NSString *const reuseIdentifier = @"storeInfo";
+static const NSInteger cellHeight = 200;
 
 @interface TopicDetailTableViewController ()
+
+@property (strong, nonatomic) NSMutableArray *stores;
 
 @end
 
@@ -20,15 +26,19 @@
     [super viewDidLoad];
 
     [self loadData];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (NSMutableArray *)stores {
+    if (!_stores) {
+        _stores = [NSMutableArray array];
+    }
+    return _stores;
 }
 
 #pragma mark -
 - (void)loadData {
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"StoreInfoTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 
     NSDictionary *parameters = @{
                                  @"client_secret": @"a2d2bde1e5699dfa166c2dcdf71e8c7b" ,
@@ -45,10 +55,16 @@
         NSLog(@"-------------%@", model.message);
         NSDictionary *data = result[@"data"];
         TopicDetailModel *dataModel = [TopicDetailModel yy_modelWithJSON:data];
-        NSLog(@"-------------%@", dataModel.description);
+        NSLog(@"-------------%@", dataModel.topic_description);
 
+        for (NSDictionary *store in data[@"stores"]) {
+
+            StoreInfoModel *model = [StoreInfoModel yy_modelWithJSON:store];
+            NSLog(@"++++++++%@", model.store_english_name);
+            [self.stores addObject:model];
+        }
         //数据加载完后需要重新加载tableView
-//        [self.tableView reloadData];
+        [self.tableView reloadData];
     } failed:^(NSError * _Nonnull error) {
         
         NSLog(@"%@", error);
@@ -64,23 +80,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 0;
+    return _stores.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    StoreInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.storeInfoModel = _stores[indexPath.row];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return cellHeight;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

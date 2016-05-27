@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeModel.h"
 
 @interface StoreInfoTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) StoreInfoModel *storeInfoModel;
 
 @end
