@@ -45,27 +45,22 @@
     self.descriptionLabel.text = text;
 
     string = storeInfoModel.headpic;
-
     NSString *imageURL = [string cutToFitAURL];
     [self.coverButton sd_setImageWithURL:[NSURL URLWithString:imageURL] forState:UIControlStateNormal];
 
     string = storeInfoModel.icon;
-
     imageURL =  [string cutToFitAURL];
     [self.iconButton sd_setImageWithURL:[NSURL URLWithString:imageURL] forState:UIControlStateNormal];
 
     string = storeInfoModel.pics[0][@"url"];
-
     imageURL =  [string cutToFitAURL];
     [self.imageViewLeft sd_setImageWithURL:[NSURL URLWithString:imageURL]];
 
     string = storeInfoModel.pics[1][@"url"];
-
     imageURL =  [string cutToFitAURL];
     [self.imageViewCenter sd_setImageWithURL:[NSURL URLWithString:imageURL]];
 
     string = storeInfoModel.pics[2][@"url"];
-
     imageURL =  [string cutToFitAURL];
     [self.imageViewRight sd_setImageWithURL:[NSURL URLWithString:imageURL]];
 }
