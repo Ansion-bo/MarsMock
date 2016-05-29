@@ -17,7 +17,7 @@
 
 @interface HomeTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) NSArray *bizares;
+@property (strong, nonatomic) NSArray *_Nullable bizares;
 
 @property (weak, nonatomic) id <HomeTableViewDelegate> _Nullable homeDelegate;
 //@property (strong, nonatomic) NSIndexPath * _Nullable currentIndexPath;

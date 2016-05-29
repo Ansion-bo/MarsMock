@@ -14,7 +14,6 @@
 
     NSRange range =  [self rangeOfString:@"?"];
     NSString *fitString = [self substringWithRange: NSMakeRange(0, range.location)];
-
     return fitString;
 }
 
