@@ -10,6 +10,9 @@
 #import "GuideTableViewController.h"
 #import "BaseTabBarController.h"
 
+//for test
+#import "BaseTabBarController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,7 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[GuideTableViewController alloc] init];
+    UITabBarController *vc = [[BaseTabBarController alloc] init];
+    vc.selectedIndex = 1;
+    self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
 
     

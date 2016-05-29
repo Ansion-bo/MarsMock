@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		709E80761CFAA45C0036A421 /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 709E80751CFAA45C0036A421 /* Const.m */; };
 		B7560BCE1CF89F68001B4720 /* HomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7560BCD1CF89F68001B4720 /* HomeTableView.m */; };
 		B7560BD21CF8A0C3001B4720 /* HomebizareaInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7560BD01CF8A0C3001B4720 /* HomebizareaInfoCell.m */; };
 		B7560BD31CF8A0C3001B4720 /* HomebizareaInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7560BD11CF8A0C3001B4720 /* HomebizareaInfoCell.xib */; };
@@ -103,6 +104,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		709E80741CFAA45C0036A421 /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		709E80751CFAA45C0036A421 /* Const.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Const.m; sourceTree = "<group>"; };
 		B7560BCC1CF89F68001B4720 /* HomeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableView.h; sourceTree = "<group>"; };
 		B7560BCD1CF89F68001B4720 /* HomeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableView.m; sourceTree = "<group>"; };
 		B7560BCF1CF8A0C3001B4720 /* HomebizareaInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomebizareaInfoCell.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 				B79DA38D1C3631AC00F0C99D /* common.h */,
 				B79DA38E1C3631AC00F0C99D /* Controllers */,
 				B79DA3931C3631AC00F0C99D /* DIYClasses */,
+				709E80741CFAA45C0036A421 /* Const.h */,
+				709E80751CFAA45C0036A421 /* Const.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -825,6 +830,7 @@
 				B7F067CE1C35FC2F00FCBD4B /* GuideTableViewController.m in Sources */,
 				B79DA5CA1CF6F2CF00F0C99D /* BaseViewController.m in Sources */,
 				B7A1EF4F1C3607C4009F35BD /* TopicDetailTableViewController.m in Sources */,
+				709E80761CFAA45C0036A421 /* Const.m in Sources */,
 				B79DA5C31CF6F17300F0C99D /* UIImage+MultiFormat.m in Sources */,
 				B79DA5C41CF6F17300F0C99D /* UIImage+WebP.m in Sources */,
 				B79DA5211CF6CD9200F0C99D /* AFURLResponseSerialization.m in Sources */,
